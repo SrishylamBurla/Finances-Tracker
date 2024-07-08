@@ -31,7 +31,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-app.get("/", (req, res)=>{
+app.use("/", (req, res)=>{
     res.json("hello")
 })
 app.use("/", userRouter)
