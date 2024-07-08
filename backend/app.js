@@ -31,9 +31,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-app.use("/", (req, res)=>{
-    res.json("hello")
-})
+// app.use("/", (req, res)=>{
+//     res.json("hello")
+// })
 app.use("/", userRouter)
 app.use("/", categoryRouter)
 app.use("/", transactionRouter)
