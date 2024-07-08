@@ -28,7 +28,12 @@ const corsOptions = {
     methods: ["POST", "GET"],
     credentials:true
 }
+
 app.use(cors(corsOptions))
+
+app.get("/", (req, res)=>{
+    res.json("hello")
+})
 app.use("/", userRouter)
 app.use("/", categoryRouter)
 app.use("/", transactionRouter)
