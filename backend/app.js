@@ -4,13 +4,19 @@ const userRouter = require("./routes/userRouter")
 const errorHandler = require("./middlewares/errorHandlerMiddleware")
 const categoryRouter = require("./routes/categoryRouter")
 const cors = require("cors")
+const dotEnv = require("dotenv")
+
 const transactionRouter = require("./routes/transactionRouter")
 const PORT = process.env.PORT || 8000
 
 const app = express()
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses",{
+dotEnv.config()
+
+// const MONGO_URI = "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
+
+mongoose.connect(process.env.MONGO_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })

@@ -46,12 +46,22 @@ function App() {
               </AuthRoute>
             }
           />
-          <Route path="/update-category/:id" element={<AuthRoute>
-            <UpdateCategory />
-          </AuthRoute>} />
-          <Route path="/add-transaction" element={<AuthRoute>
-            <TransactionForm />
-          </AuthRoute>} />
+          <Route
+            path="/update-category/:id"
+            element={
+              <AuthRoute>
+                <UpdateCategory />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path="/add-transaction"
+            element={
+              <AuthRoute>
+                <TransactionForm />
+              </AuthRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={
