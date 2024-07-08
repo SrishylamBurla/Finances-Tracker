@@ -24,7 +24,9 @@ mongoose.connect(process.env.MONGO_URI,{
 .catch((e)=>console.log(e))
 
 const corsOptions = {
-    origin: ['http://localhost:5173']
+    origin: ['http://localhost:5173'],
+    methods: ["POST", "GET"],
+    credentials:true
 }
 app.use(cors(corsOptions))
 app.use("/", userRouter)
