@@ -14,19 +14,13 @@ app.use(express.json())
 
 dotEnv.config()
 
-__dirname = path.resolve();
-if(process.env.NODE_ENV==='production'){
-  app.use(express.static(path.join(__dirname, "/client/build")))
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, 'build')));
 
-  app.get('*', (req, res)=>{
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-}else{
-  app.get('/', (req, res) => {
-    const port = process.env.PORT || 5000;
-    res.send('Server is working on port ' + port);
-  });
-}
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // const MONGO_URI = "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
 
