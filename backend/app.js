@@ -8,11 +8,25 @@ const dotEnv = require("dotenv")
 
 const transactionRouter = require("./routes/transactionRouter")
 const PORT = process.env.PORT || 8000
-
+const path = require('path');
 const app = express()
 app.use(express.json())
 
 dotEnv.config()
+
+__dirname = path.resolve();
+if(process.env.NODE_ENV==='production'){
+  app.use(express.static(path.join(__dirname, "/client/build")))
+
+  app.get('*', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}else{
+  app.get('/', (req, res) => {
+    const port = process.env.PORT || 5000;
+    res.send('Server is working on port ' + port);
+  });
+}
 
 // const MONGO_URI = "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
 
