@@ -4,7 +4,7 @@ const userRouter = require("./routes/userRouter")
 const errorHandler = require("./middlewares/errorHandlerMiddleware")
 const categoryRouter = require("./routes/categoryRouter")
 const cors = require("cors")
-const dotEnv = require("dotenv")
+require("dotenv").config()
 
 const transactionRouter = require("./routes/transactionRouter")
 const PORT = process.env.PORT || 8000
@@ -12,15 +12,21 @@ const path = require('path');
 const app = express()
 app.use(express.json())
 
-dotEnv.config()
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, 'build')));
 
-// Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+__dirname = path.resolve();
+if(process.env.NODE_ENV==='production'){
+  app.use(express.static(path.join(__dirname, "/client/build")))
+
+  app.get('*', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}else{
+  app.get('/', (req, res) => {
+    const port = process.env.PORT || 5000;
+    res.send('Server is working on port ' + port);
+  });
+}
 
 // const MONGO_URI = "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
 
