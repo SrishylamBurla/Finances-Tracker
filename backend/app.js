@@ -30,10 +30,7 @@ if(process.env.NODE_ENV==='production'){
 
 // const MONGO_URI = "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
 
-mongoose.connect(process.env.MONGO_URI,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>{console.log("DB connected");})
 .catch((e)=>console.log(e))
 
