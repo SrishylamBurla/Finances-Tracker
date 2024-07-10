@@ -47,7 +47,7 @@ export default function PrivateNavbar() {
                     to="/"
                     className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
                   >
-                    MasyncTracker
+                    FinanceTracker
                   </Link>
                 </div>
                 <div className="hidden md:ml-6 md:flex md:space-x-8">
