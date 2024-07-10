@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
 import "./App.css";
 import HeroSection from "./components/Home/HomePage";
 import PublicNavbar from "./components/Navbar/PublicNavbar";
