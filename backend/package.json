@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js", 
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "start": " node app.js",
+    "heroku-postbuild": "cd ../frontend && npm install && npm run build && cp -r build ../backend/build"
   },
   "keywords": [],
   "author": "",
