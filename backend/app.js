@@ -28,10 +28,10 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// const MONGO_URI = "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://srishylam125:rksrishylam@srishylam.0wf14ig.mongodb.net/mern-expenses"
 
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
