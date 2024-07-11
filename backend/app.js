@@ -14,11 +14,11 @@ app.use(express.json());
 
 __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
   app.get("*", (req, res) => {
     res.sendFile(
-      path.resolve(__dirname, "..", "frontend", "dist", "index.html")
+      path.resolve(__dirname, "frontend", "dist", "index.html")
     );
   });
 } else {
@@ -58,5 +58,5 @@ app.use("/", transactionRouter);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`server is up and running... on port ${PORT}`);
+  console.log(`server is up and running on port ${PORT}`);
 });
